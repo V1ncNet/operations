@@ -1,0 +1,4 @@
+---
+- name: Provide local software and configuration
+  hosts: localhost
+  connection: local
