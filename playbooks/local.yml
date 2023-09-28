@@ -17,6 +17,11 @@
         upgrade_options: ignore-pinned
       changed_when: false
 
+    - name: Upgrade all Homebrew casks
+      community.general.homebrew_cask:
+        upgrade_all: true
+      changed_when: false
+
   roles:
 
     - openjdk
