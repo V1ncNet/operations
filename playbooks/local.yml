@@ -9,6 +9,14 @@
       ansible.builtin.import_tasks: tasks/macos-guard.yml
       tags: always
 
+    - name: Update Homebrew and upgrade all packages
+      tags: update
+      community.general.homebrew:
+        update_homebrew: true
+        upgrade_all: true
+        upgrade_options: ignore-pinned
+      changed_when: false
+
   roles:
 
     - openjdk
