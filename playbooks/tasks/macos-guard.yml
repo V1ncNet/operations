@@ -1,0 +1,6 @@
+---
+- name: Ensure host runs macOS
+  ansible.builtin.assert:
+    that: ansible_distribution == "MacOSX"
+    fail_msg: "Execution restricted to macOS"
+  when: not ansible_check_mode

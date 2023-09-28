@@ -2,3 +2,9 @@
 - name: Provide local software and configuration
   hosts: localhost
   connection: local
+
+  pre_tasks:
+
+    - name: Require host OS to be macOS
+      ansible.builtin.import_tasks: tasks/macos-guard.yml
+      tags: always
