@@ -8,3 +8,7 @@
     - name: Require host OS to be macOS
       ansible.builtin.import_tasks: tasks/macos-guard.yml
       tags: always
+
+  roles:
+
+    - openjdk
