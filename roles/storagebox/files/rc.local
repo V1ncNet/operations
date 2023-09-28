@@ -1,0 +1,2 @@
+modprobe cifs
+echo 0 > /proc/fs/cifs/OplockEnabled

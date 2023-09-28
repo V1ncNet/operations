@@ -1,0 +1,29 @@
+---
+- name: Install CIFS mount type
+  ansible.builtin.apt:
+    name: cifs-utils
+    state: present
+
+- name: Copy CIFS kernel mod
+  ansible.builtin.copy:
+    src: rc.local
+    dest: /etc/rc.local
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Render mount credentials
+  ansible.builtin.template:
+    src: cifs_credentials.j2
+    dest: "{{ cifs_credentials_path }}"
+    owner: root
+    group: root
+    mode: '0600'
+
+- name: Mount Storage Box volume
+  ansible.posix.mount:
+    src: "//{{ storagebox_account_username }}.your-storagebox.de/{{ cifs_share }}"
+    path: "{{ cifs_mountpoint }}"
+    opts: "{{ cifs_mount_options | join(',') }}"
+    fstype: cifs
+    state: mounted
