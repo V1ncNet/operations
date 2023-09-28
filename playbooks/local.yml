@@ -24,5 +24,6 @@
 
   roles:
 
+    - iterm2
     - openjdk
     - maven
