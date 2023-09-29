@@ -1,0 +1,42 @@
+---
+- name: Install hcloud Homebrew packages
+  tags: hetzner, hcloud
+  community.general.homebrew:
+    name: hcloud
+    state: present
+
+- block:
+
+    - name: Ensure completion location exsit
+      tags: hetzner, hcloud
+      ansible.builtin.file:
+        path: "{{ ansible_user_dir }}/.config/hcloud/completion/zsh/"
+        owner: "{{ ansible_user_id }}"
+        group: staff
+        mode: '0755'
+        state: directory
+
+    - name: Execute zsh completion command
+      tags: hetzner, hcloud
+      ansible.builtin.command:
+        cmd: hcloud completion zsh
+      register: cmd
+      changed_when: cmd.rc != 0
+
+    - name: Print command output to completion file
+      tags: hetzner, hcloud
+      ansible.builtin.copy:
+        content: "{{ cmd.stdout }}\n"
+        dest: "{{ ansible_user_dir }}/.config/hcloud/completion/zsh/_hcloud"
+        owner: "{{ ansible_user_id }}"
+        group: staff
+        mode: '0644'
+
+- name: Add initialization statement
+  tags: hetzner, hcloud
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_user_dir }}/.zshrc"
+    value: fpath+=(${HOME}/.config/hcloud/completion/zsh)
+    insertbefore: ^source \$ZSH/oh-my-zsh.sh$
+    firstmatch: true
+    state: present

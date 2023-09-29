@@ -24,6 +24,7 @@
 
   roles:
 
+    - hcloud
     - iterm2
     - openjdk
     - maven
