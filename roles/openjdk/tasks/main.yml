@@ -7,15 +7,4 @@
       - openjdk
   notify:
     - commandline programm installed
-
-- name: Link JDKs for system wrapper
-  become: true
-  ansible.builtin.file:
-    src: "{{ item.src }}"
-    dest: "{{ item.dest }}"
-    state: link
-    force: true
-  loop:
-    - { src: /opt/homebrew/opt/openjdk@11/libexec/openjdk.jdk, dest: /Library/Java/JavaVirtualMachines/openjdk-11.jdk }
-    - { src: /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk, dest: /Library/Java/JavaVirtualMachines/openjdk-17.jdk }
-    - { src: /opt/homebrew/opt/openjdk/libexec/openjdk.jdk, dest: /Library/Java/JavaVirtualMachines/openjdk.jdk }
+    - openjdk package installed
