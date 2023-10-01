@@ -15,11 +15,13 @@
         update_homebrew: true
         upgrade_all: true
         upgrade_options: ignore-pinned
+      when: not ansible_check_mode
       changed_when: false
 
     - name: Upgrade all Homebrew casks
       community.general.homebrew_cask:
         upgrade_all: true
+      when: not ansible_check_mode
       changed_when: false
 
   roles:
