@@ -1,0 +1,21 @@
+---
+- name: Install dependencies
+  community.general.homebrew:
+    name: "{{ omz_dependencies }}"
+    state: present
+
+- name: Clone repositorty
+  ansible.builtin.git:
+    repo: https://github.com/ohmyzsh/ohmyzsh.git
+    dest: ~/.oh-my-zsh
+    single_branch: true
+    version: master
+
+- name: Render configuration
+  ansible.builtin.template:
+    src: zshrc.j2
+    dest: ~/.zshrc
+    backup: true
+    owner: "{{ ansible_user_id }}"
+    group: staff
+    mode: '0640'

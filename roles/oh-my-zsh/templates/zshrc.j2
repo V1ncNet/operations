@@ -1,0 +1,23 @@
+{{ ansible_managed | comment }}
+export ZSH=$HOME/.oh-my-zsh
+
+ZSH_THEME={{ omz_theme | default('robbyrussell') | quote }}
+CASE_SENSITIVE={{ omz_case_sensitive | default('false') | quote }}
+HYPHEN_INSENSITIVE={{ omz_hyphen_insensitive | default('false') | quote }}
+DISABLE_MAGIC_FUNCTIONS={{ omz_disable_magic_functions | default('false') | quote }}
+DISABLE_LS_COLORS={{ omz_disable_ls_colors | default('false') | quote }}
+DISABLE_AUTO_TITLE={{ omz_disable_auto_title | default('false') | quote }}
+ENABLE_CORRECTION={{ omz_enable_correction | default('false') | quote }}
+COMPLETION_WAITING_DOTS={{ omz_completion_waiting_dots | default('false') | quote }}
+DISABLE_UNTRACKED_FILES_DIRTY={{ omz_disable_untracked_files_dirty | default('false') | quote }}
+HIST_STAMPS={{ omz_hist_stamps | default('mm/dd/yyyy') | quote }}
+ZSH_CUSTOM={{ omz_zsh_custom | default('$ZSH/custom') }}
+
+plugins=(
+{{ omz_plugins | join('\n') | trim }}
+)
+
+zstyle ':omz:update' mode {{ omz_update_mode | default('reminder') }}
+zstyle ':omz:update' frequency {{ omz_update_frequency | default('13') }}
+
+source $ZSH/oh-my-zsh.sh
