@@ -26,6 +26,7 @@
 
   roles:
 
+    - oh-my-zsh
     - hcloud
     - iterm2
     - openjdk
