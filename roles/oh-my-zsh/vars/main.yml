@@ -1,0 +1,17 @@
+---
+omz_dependencies:
+  - zsh
+  - git
+
+omz_plugins:
+  - ansible
+  - brew
+  - cp
+  - encode64
+  - extract
+  - git
+  - gitignore
+  - macos
+  - rsync
+  - sudo
+omz_hist_stamps: yyyy-mm-dd
