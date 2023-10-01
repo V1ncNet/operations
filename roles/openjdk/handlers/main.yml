@@ -1,0 +1,9 @@
+---
+- name: Export java home
+  ansible.builtin.lineinfile:
+    path: ~/.zshrc
+    line: export JAVA_HOME=$(/usr/libexec/java_home -v 11)
+    insertbefore: ^# End ENV block
+  listen:
+    - shell configuration replaced
+    - commandline programm installed

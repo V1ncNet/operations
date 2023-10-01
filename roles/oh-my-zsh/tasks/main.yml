@@ -19,3 +19,6 @@
     owner: "{{ ansible_user_id }}"
     group: staff
     mode: '0640'
+  changed_when: true
+  notify:
+    - shell configuration replaced

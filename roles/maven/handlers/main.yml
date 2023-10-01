@@ -1,0 +1,20 @@
+---
+- name: Export maven home
+  ansible.builtin.lineinfile:
+    path: ~/.zshrc
+    line: |
+      export M2_HOME=/opt/homebrew/Cellar/maven/3.9.1/libexec
+      export MAVEN_HOME=$M2_HOME
+    insertbefore: ^# End ENV block
+  listen:
+    - shell configuration replaced
+    - commandline programm installed
+
+- name: Install mvn oh-my-zsh plugin
+  ansible.builtin.lineinfile:
+    path: ~/.zshrc
+    line: mvn
+    insertbefore: ^# End PLUGINS block
+  listen:
+    - shell configuration replaced
+    - commandline programm installed

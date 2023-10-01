@@ -1,0 +1,9 @@
+---
+- name: Install shell completions
+  ansible.builtin.lineinfile:
+    path: ~/.zshrc
+    line: fpath+=$HOME/.config/hcloud/completion/zsh
+    insertbefore: ^# End OMZ_CONFIG block
+  listen:
+    - shell configuration replaced
+    - application completion installed

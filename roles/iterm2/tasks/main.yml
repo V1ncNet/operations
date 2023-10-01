@@ -3,6 +3,8 @@
   community.general.homebrew_cask:
     name: iterm2
     state: present
+  notify:
+    - commandline programm installed
 
 - name: Ensure preference directory exist
   ansible.builtin.file:

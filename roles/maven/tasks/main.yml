@@ -3,6 +3,8 @@
   tags: setup
   community.general.homebrew:
     name: maven
+  notify:
+    - commandline programm installed
 
 - name: Ensure .m2/ directory exist
   ansible.builtin.file:

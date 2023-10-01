@@ -5,6 +5,8 @@
       - openjdk@11
       - openjdk@17
       - openjdk
+  notify:
+    - commandline programm installed
 
 - name: Link JDKs for system wrapper
   become: true
