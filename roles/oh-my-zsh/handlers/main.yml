@@ -1,0 +1,17 @@
+---
+- name: Log reset of .zshrc
+  ansible.builtin.debug:
+    msg: |
+      oh-my-zsh configuration resetted.
+      You may need to rerun other roles and playbooks to restore custom configuration.
+  listen:
+    - shell configuration replaced
+
+- name: Apply legacy configuration tasks
+  ansible.builtin.include_tasks:
+    file: legacy.yml
+    apply:
+      tags: always
+  tags: legacy
+  listen:
+    - shell configuration replaced

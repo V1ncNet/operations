@@ -1,0 +1,30 @@
+export LANG=de_DE.UTF-8
+
+alias uuidgen='uuidgen | tr "[:upper:]" "[:lower:]"'
+alias chrome='open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security'
+
+lower() {
+  setopt localoptions noautopushd
+
+  if (( $# == 0 )); then
+    cat >&2 <<'EOF'
+Usage: lower <string>
+EOF
+  fi
+
+  local string="${1}"
+  echo ${string} | tr '[:upper:]' '[:lower:]'
+}
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
+
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+  source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
