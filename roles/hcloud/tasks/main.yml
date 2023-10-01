@@ -10,7 +10,7 @@
     - name: Ensure completion location exsit
       tags: hetzner, hcloud
       ansible.builtin.file:
-        path: "{{ ansible_user_dir }}/.config/hcloud/completion/zsh/"
+        path: ~/.config/hcloud/completion/zsh/
         owner: "{{ ansible_user_id }}"
         group: staff
         mode: '0755'
@@ -27,7 +27,7 @@
       tags: hetzner, hcloud
       ansible.builtin.copy:
         content: "{{ cmd.stdout }}\n"
-        dest: "{{ ansible_user_dir }}/.config/hcloud/completion/zsh/_hcloud"
+        dest: ~/.config/hcloud/completion/zsh/_hcloud
         owner: "{{ ansible_user_id }}"
         group: staff
         mode: '0644'
@@ -35,7 +35,7 @@
 - name: Add initialization statement
   tags: hetzner, hcloud
   ansible.builtin.lineinfile:
-    path: "{{ ansible_user_dir }}/.zshrc"
+    path: ~/.zshrc
     value: fpath+=(${HOME}/.config/hcloud/completion/zsh)
     insertbefore: ^source \$ZSH/oh-my-zsh.sh$
     firstmatch: true
