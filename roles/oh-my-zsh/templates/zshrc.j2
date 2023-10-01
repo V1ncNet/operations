@@ -1,4 +1,10 @@
 {{ ansible_managed | comment }}
+# Begin ENV block
+# End ENV block
+
+# Begin PATH block
+# End PATH block
+
 export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME={{ omz_theme | default('robbyrussell') | quote }}
@@ -12,12 +18,21 @@ COMPLETION_WAITING_DOTS={{ omz_completion_waiting_dots | default('false') | quot
 DISABLE_UNTRACKED_FILES_DIRTY={{ omz_disable_untracked_files_dirty | default('false') | quote }}
 HIST_STAMPS={{ omz_hist_stamps | default('mm/dd/yyyy') | quote }}
 ZSH_CUSTOM={{ omz_zsh_custom | default('$ZSH/custom') }}
+# Begin OMZ_PREF block
+# End OMZ_PREF block
 
 plugins=(
 {{ omz_plugins | join('\n') | trim }}
+# Begin PLUGINS block
+# End PLUGINS block
 )
 
 zstyle ':omz:update' mode {{ omz_update_mode | default('reminder') }}
 zstyle ':omz:update' frequency {{ omz_update_frequency | default('13') }}
+# Begin OMZ_CONFIG block
+# End OMZ_CONFIG block
 
 source $ZSH/oh-my-zsh.sh
+
+# Begin USER_CONFIG block
+# End USER_CONFIG block
