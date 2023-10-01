@@ -12,6 +12,7 @@
     version: master
 
 - name: Render configuration
+  tags: never
   ansible.builtin.template:
     src: zshrc.j2
     dest: ~/.zshrc
