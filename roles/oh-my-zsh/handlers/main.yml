@@ -16,6 +16,14 @@
   listen:
     - shell configuration replaced
 
+- name: Configure zsh site functions plugin
+  ansible.builtin.lineinfile:
+    path: ~/.zshrc
+    line: fpath+=$(brew --prefix)/share/zsh/site-functions
+    insertbefore: ^# End OMZ_CONFIG block
+  listen:
+    - shell configuration replaced
+
 - name: Import ssh-agent shell configuration
   ansible.builtin.include_tasks:
     file: ssh-agent.yml

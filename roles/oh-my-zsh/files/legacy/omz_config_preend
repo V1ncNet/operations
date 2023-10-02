@@ -2,5 +2,3 @@ zstyle ':completion:*:*:docker:*' option-stacking yes
 zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
 source $HOME/GitHub/dracula/zsh-syntax-highlighting/zsh-syntax-highlighting.sh
-
-fpath+=$(brew --prefix)/share/zsh/site-functions
