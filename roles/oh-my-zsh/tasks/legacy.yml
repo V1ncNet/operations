@@ -9,7 +9,7 @@
     - { marker: "# PATH_LEGACY marker", placement: "# Begin PATH block" }
     - { marker: "# OMZ_PREF_LEGACY marker", placement: "# Begin OMZ_PREF block" }
     - { marker: "# PLUGINS_LEGACY marker", placement: "# Begin PLUGINS block" }
-    - { marker: "# OMZ_CONFIG_LEGACY marker", placement: "# End OMZ_CONFIG block" }
+    - { marker: "# OMZ_CONFIG_LEGACY marker", placement: "# Begin OMZ_CONFIG block" }
     - { marker: "# USER_CONFIG_LEGACY marker", placement: "# Begin USER_CONFIG block" }
 
 - name: Render environment configuration
@@ -40,7 +40,7 @@
   ansible.builtin.lineinfile:
     path: ~/.zshrc
     line: "{{ lookup('ansible.builtin.file', 'legacy/omz_config_preend') }}"
-    insertbefore: ^# OMZ_CONFIG_LEGACY marker
+    insertafter: ^# OMZ_CONFIG_LEGACY marker
 
 - name: Render user configuration
   ansible.builtin.lineinfile:
