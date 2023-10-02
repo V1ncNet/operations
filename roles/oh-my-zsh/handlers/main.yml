@@ -15,3 +15,11 @@
   tags: legacy
   listen:
     - shell configuration replaced
+
+- name: Import ssh-agent shell configuration
+  ansible.builtin.include_tasks:
+    file: ssh-agent.yml
+    apply:
+      tags: always
+  listen:
+    - shell configuration replaced

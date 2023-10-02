@@ -1,0 +1,12 @@
+---
+- name: Install ssh-agent plugin
+  ansible.builtin.lineinfile:
+    path: ~/.zshrc
+    line: ssh-agent
+    insertbefore: ^# End PLUGINS block
+
+- name: Configure ssh-agent plugin
+  ansible.builtin.lineinfile:
+    path: ~/.zshrc
+    line: zstyle :omz:plugins:ssh-agent lazy yes
+    insertbefore: ^# End OMZ_CONFIG block
