@@ -22,3 +22,12 @@
   listen:
     - shell configuration replaced
     - commandline programm installed
+
+- name: Update user path (openjdk)
+  ansible.builtin.lineinfile:
+    path: ~/.zshrc
+    line: export PATH=$JAVA_HOME/bin:$PATH
+    insertbefore: ^# End PATH block
+  listen:
+    - shell configuration replaced
+    - commandline programm installed

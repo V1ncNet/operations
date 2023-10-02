@@ -18,3 +18,12 @@
   listen:
     - shell configuration replaced
     - commandline programm installed
+
+- name: Update user path (maven)
+  ansible.builtin.lineinfile:
+    path: ~/.zshrc
+    line: export PATH=$M2_HOME/bin:$PATH
+    insertbefore: ^# End PATH block
+  listen:
+    - shell configuration replaced
+    - commandline programm installed

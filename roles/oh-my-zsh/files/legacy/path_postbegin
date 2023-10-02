@@ -1,4 +1,2 @@
 export PATH=/opt/homebrew/opt/jpeg/bin:$PATH
 export PATH=/opt/homebrew/opt/curl/bin:$PATH
-export PATH=$JAVA_HOME/bin:$PATH
-export PATH=$M2_HOME/bin:$PATH
