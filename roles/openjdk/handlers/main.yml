@@ -21,7 +21,7 @@
     insertbefore: ^# End ENV block
   listen:
     - shell configuration replaced
-    - commandline programm installed
+    - commandline program installed
 
 - name: Update user path (openjdk)
   ansible.builtin.lineinfile:
@@ -30,4 +30,4 @@
     insertbefore: ^# End PATH block
   listen:
     - shell configuration replaced
-    - commandline programm installed
+    - commandline program installed

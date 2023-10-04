@@ -6,7 +6,7 @@
     insertbefore: ^# End PLUGINS block
   listen:
     - shell configuration replaced
-    - commandline programm installed
+    - commandline program installed
 
 - name: Activate shell integration
   ansible.builtin.lineinfile:
@@ -15,4 +15,4 @@
     insertbefore: ^# End OMZ_CONFIG block
   listen:
     - shell configuration replaced
-    - commandline programm installed
+    - commandline program installed

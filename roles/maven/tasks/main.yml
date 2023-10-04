@@ -4,7 +4,7 @@
   community.general.homebrew:
     name: maven
   notify:
-    - commandline programm installed
+    - commandline program installed
 
 - name: Ensure .m2/ directory exist
   ansible.builtin.file:

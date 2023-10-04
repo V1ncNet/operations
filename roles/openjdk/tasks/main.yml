@@ -6,5 +6,5 @@
       - openjdk@17
       - openjdk
   notify:
-    - commandline programm installed
+    - commandline program installed
     - openjdk package installed

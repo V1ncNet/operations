@@ -8,7 +8,7 @@
     insertbefore: ^# End ENV block
   listen:
     - shell configuration replaced
-    - commandline programm installed
+    - commandline program installed
 
 - name: Install mvn oh-my-zsh plugin
   ansible.builtin.lineinfile:
@@ -17,7 +17,7 @@
     insertbefore: ^# End PLUGINS block
   listen:
     - shell configuration replaced
-    - commandline programm installed
+    - commandline program installed
 
 - name: Update user path (maven)
   ansible.builtin.lineinfile:
@@ -26,4 +26,4 @@
     insertbefore: ^# End PATH block
   listen:
     - shell configuration replaced
-    - commandline programm installed
+    - commandline program installed

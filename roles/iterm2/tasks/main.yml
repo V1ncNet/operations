@@ -4,7 +4,7 @@
     name: iterm2
     state: present
   notify:
-    - commandline programm installed
+    - commandline program installed
 
 - name: Ensure preference directory exist
   ansible.builtin.file:
