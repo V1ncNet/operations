@@ -12,9 +12,8 @@
     state: directory
     mode: '0755'
 
-- name: Link preferences
+- name: Copy preferences
   ansible.builtin.copy:
     src: com.googlecode.iterm2.plist
     dest: ~/.config/iterm2/preferences/com.googlecode.iterm2.plist
-    state: link
     mode: '0640'
