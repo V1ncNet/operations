@@ -5,7 +5,8 @@
     name: hcloud
     state: present
 
-- block:
+- name: Configure hcloud zsh completions
+  block:
 
     - name: Ensure completion location exsit
       tags: hetzner, hcloud
