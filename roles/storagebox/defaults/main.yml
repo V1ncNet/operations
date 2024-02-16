@@ -1,15 +1,15 @@
 ---
-cifs_credentials_path: /etc/cifs_credentials
-cifs_mountpoint: /mnt
-cifs_system_uid: root
-cifs_system_gid: root
-cifs_share: backup
-cifs_mount_options:
+storagebox_cifs_credentials_path: /etc/cifs_credentials
+storagebox_cifs_mountpoint: /mnt
+storagebox_cifs_system_uid: root
+storagebox_cifs_system_gid: root
+storagebox_cifs_share: backup
+storagebox_cifs_mount_options:
   - iocharset=utf8
   - rw
-  - credentials={{ cifs_credentials_path }}
-  - uid={{ cifs_system_uid }}
-  - gid={{ cifs_system_gid }}
+  - credentials={{ storagebox_cifs_credentials_path }}
+  - uid={{ storagebox_cifs_system_uid }}
+  - gid={{ storagebox_cifs_system_gid }}
   - file_mode=0660
   - dir_mode=0770
   - rsize=65536
