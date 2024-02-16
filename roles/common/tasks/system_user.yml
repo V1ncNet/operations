@@ -1,0 +1,16 @@
+---
+- block:
+
+  - name: "Create group {{ system_app_group }}"
+    ansible.builtin.group:
+      name: "{{ system_app_group }}"
+      system: true
+      state: present
+
+  - name: "Create user {{ system_app_user }}"
+    ansible.builtin.user:
+      name: "{{ system_app_user }}"
+      group: "{{ system_app_group }}"
+      create_home: false
+      system: true
+      state: present

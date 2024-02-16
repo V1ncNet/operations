@@ -1,0 +1,18 @@
+---
+- name: Enabling MinIO service
+  ansible.builtin.systemd:
+    name: minio
+    enabled: true
+  listen:
+    - service configuration changed
+  ignore_errors: "{{ ansible_check_mode }}"
+
+- name: Restarting MinIO service
+  ansible.builtin.systemd:
+    name: minio
+    state: restarted
+  listen:
+    - service configuration changed
+    - application configuration changed
+    - application release changed
+  ignore_errors: "{{ ansible_check_mode }}"

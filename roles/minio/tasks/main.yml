@@ -1,0 +1,19 @@
+---
+- name: Provisioning environment variables file
+  tags: configuration, deployment
+  vars:
+    minio_app_server_host: "{{ ansible_default_ipv4.address }}"
+  ansible.builtin.template:
+    src: minio.env.j2
+    dest: /etc/default/minio
+    mode: '0600'
+  notify: application configuration changed
+
+- name: Installing MinIO Debian package
+  tags: deployment
+  ansible.builtin.apt:
+    deb: "{{ minio_release }}"
+    state: present
+  notify:
+    - service configuration changed
+    - application release changed

@@ -1,0 +1,6 @@
+---
+- name: Ensuring host runs a Debian derivate
+  ansible.builtin.assert:
+    that: ansible_os_family == "Debian"
+    fail_msg: "Execution restricted to Debian derivates"
+  when: not ansible_check_mode

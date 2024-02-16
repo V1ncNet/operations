@@ -1,0 +1,12 @@
+---
+- name: Updating package manager repository cache
+  tags: always
+  ansible.builtin.apt:
+    update_cache: true
+  changed_when: false
+
+- name: Upgrading distribution packages
+  tags: always
+  ansible.builtin.apt:
+    upgrade: dist
+  changed_when: false

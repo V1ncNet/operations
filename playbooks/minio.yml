@@ -1,0 +1,41 @@
+---
+- name: Provisioning MinIO storage connector
+  hosts: minio
+  remote_user: ansible
+  gather_facts: false
+  become: true
+  vars:
+    cifs_mountpoint: "{{ minio_app_volume }}"
+    cifs_system_uid: "{{ system_app_user }}"
+    cifs_system_gid: "{{ system_app_group }}"
+
+
+  pre_tasks:
+
+    - name: Gathering Facts
+      tags: always
+      ansible.builtin.setup:
+
+    - name: Updating and upgrading Aptitude packages
+      ansible.builtin.include_role:
+        name: common
+        tasks_from: dist_upgrade.yml
+        public: false
+        apply:
+          tags: always
+      tags: setup
+
+    - name: Importing application user bootstrap tasks
+      ansible.builtin.include_role:
+        name: common
+        tasks_from: system_user.yml
+        public: false
+        apply:
+          tags: always
+      tags: setup
+
+
+  roles:
+
+    - storagebox
+    - minio

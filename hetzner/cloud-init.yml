@@ -1,0 +1,9 @@
+#cloud-config
+timezone: Europe/Berlin
+locale: en_US.UTF-8
+ssh_pwauth: false
+
+users:
+  - name: root
+    ssh_authorized_keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDHkamWQJMdbGemYUKQ52h0uDltoU+kVPhmtOV0ABq8s

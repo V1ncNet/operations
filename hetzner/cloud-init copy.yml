@@ -1,0 +1,62 @@
+#cloud-config
+timezone: Europe/Berlin
+locale: en_US.UTF-8
+ssh_pwauth: false
+
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp7s0:
+      dhcp4: true
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4, 1.1.1.1]
+      routes:
+        - to: 0.0.0.0/0
+          via: 10.0.0.1
+          metric: 3
+
+users:
+  - default
+  - name: vincent
+    gecos: Vincent Nadoll
+    primary_group: vincent
+    groups: users, sudo, staff
+    lock_passwd: false
+    passwd: $6$lbf/ABCPopEQwwwB$fEZKbKonvp5p.L5zeJlVCPN6HfhQ8u3f8QZpzbYde1Ed2KdhAeEv9fVITm82.DUMiR7LA1CZ5oxqMUyUdhh2H1
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDHkamWQJMdbGemYUKQ52h0uDltoU+kVPhmtOV0ABq8s
+  - name: ansible
+    gecos: Ansible User
+    groups: users, sudo, staff
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    lock_passwd: true
+    ssh_authorized_keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDHkamWQJMdbGemYUKQ52h0uDltoU+kVPhmtOV0ABq8s
+
+ca_certs:
+  trusted:
+    - |
+      -----BEGIN CERTIFICATE-----
+      MIIDdDCCAlygAwIBAgIBATANBgkqhkiG9w0BAQsFADBKMQswCQYDVQQGEwJERTEQ
+      MA4GA1UECAwHU2FjaHNlbjEQMA4GA1UEBwwHRHJlc2RlbjEXMBUGA1UEAwwOVmlu
+      YWRvIFJvb3QgQ0EwIBcNMjAwMTE3MTQyMzQxWhgPMjAyOTEyMzEyMzU5NTlaMEox
+      CzAJBgNVBAYTAkRFMRAwDgYDVQQIDAdTYWNoc2VuMRAwDgYDVQQHDAdEcmVzZGVu
+      MRcwFQYDVQQDDA5WaW5hZG8gUm9vdCBDQTCCASIwDQYJKoZIhvcNAQEBBQADggEP
+      ADCCAQoCggEBAL/VGhrE6SchgdTYvujuUaLnBidI34Qx4x9BzUnzoev1a+JNeqmt
+      CmT/sbicRtgGlP6P4/amhOy+LH39EbOBE7AE7aQBCIGOdkEnALp9ANkgRDjVm8cP
+      ZaK8+g8ciMYzzWjDIZ514mt72eUgIPt+a26mDFyVjuHlXsh8uvetE/j0qHYApIDe
+      CC08ATKk5oO/leVFT2O8ky1WHIAcI0b03RrxsVA7mrXxRigHvLokzQah7rN9BGiA
+      eSNOL47+Bd7Nq147QqD97mchiVk5an47N4I7lS6+wv6JX7k046bSLux4orXlwW37
+      VVy8qOgqwVGiDC317ulxw7lCAmVl93WXQlsCAwEAAaNjMGEwDgYDVR0PAQH/BAQD
+      AgEGMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFPFNjjoNhiXmUXa+jY1fqnlH
+      CiWpMB8GA1UdIwQYMBaAFPFNjjoNhiXmUXa+jY1fqnlHCiWpMA0GCSqGSIb3DQEB
+      CwUAA4IBAQCPrUIniojI1465xbKSn48MYPDQlxlZP51fKRUqjQ7GlLTwwDiVi8jm
+      SeCsCtubdXkH23v7E/QM8fZoQ7vD3W0aX/z8eX52ve8IsN0vCXJMn0RhtVSvZPT1
+      EzYmiNU0/jmYWayth3VCuu4yEwERZg9pV88lLoG+TgNksXQ0LKaelJjS1eaJ0hzA
+      unFWDPVEutIDKFjaQbOhif4+5qnm3gYP0J4Nq6vD5ZDorClzVkYiUFsB1aSfgVFy
+      MyiPgirITDHWUX5wnjIMWh5jJeGIDrGkyC3y++L4CiAJyf1a1YjcizVLyaxDNpX0
+      NXY8L5OrRw00PZcdPfYgKAf73QwEwdIg
+      -----END CERTIFICATE-----
