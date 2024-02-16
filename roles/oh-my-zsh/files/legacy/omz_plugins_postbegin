@@ -6,7 +6,6 @@ docker
 fzf
 git-lfs
 gpg-agent
-multipass
 nix-zsh-completions
 ng
 node
