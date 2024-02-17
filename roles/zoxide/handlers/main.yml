@@ -1,0 +1,9 @@
+---
+- name: Install omz plugin
+  ansible.builtin.lineinfile:
+    path: ~/.zshrc
+    line: zoxide
+    insertbefore: ^# End PLUGINS block
+  listen:
+    - shell configuration replaced
+    - commandline program installed

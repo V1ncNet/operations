@@ -1,0 +1,21 @@
+---
+- name: Install package
+  tags: setup
+  community.general.homebrew:
+    name: zoxide
+  notify: commandline program installed
+
+- name: Install Install custom omz plugin
+  block:
+
+    - name: Ensure plugin directory exist
+      ansible.builtin.file:
+        path: ~/.oh-my-zsh/custom/plugins/zoxide
+        state: directory
+        mode: '0755'
+
+    - name: Install custom omz plugin
+      ansible.builtin.copy:
+        src: zoxide.plugin.zsh
+        dest: ~/.oh-my-zsh/custom/plugins/zoxide/zoxide.plugin.zsh
+        mode: '0644'
