@@ -7,3 +7,12 @@
   listen:
     - shell configuration replaced
     - application completion installed
+
+- name: Export hcloud token
+  ansible.builtin.lineinfile:
+    path: ~/.zshrc
+    line: "export HCLOUD_TOKEN={{ hcloud_token }}"
+    insertbefore: ^# End ENV block
+  listen:
+    - shell configuration replaced
+    - commandline program installed
